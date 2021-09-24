@@ -1,4 +1,4 @@
-package org.example;
+package br.com.pedropedreiro.modelo;
 
 import static org.junit.Assert.assertTrue;
 
