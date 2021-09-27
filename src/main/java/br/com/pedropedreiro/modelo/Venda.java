@@ -96,24 +96,30 @@ public class Venda {
 
     // Resumo da conta
     public void imprimirResumo(){
-        JOptionPane.showMessageDialog(null,"Pedro Pedreiro \n Materiais para construção" +
-                "\n Resumo da compra");
+        JOptionPane.showMessageDialog(null,"Pedro Pedreiro \nMateriais para construção" +
+                "\nResumo da compra");
 
         //CONVERTE A DATA NO FORMATO DD/MM/YYYY. EX.: 25/06/2021
         Format formatter = new SimpleDateFormat("dd/MM/yyyy");
         String D = formatter.format(this.getDataVenda());
 
-        /*JOptionPane.showMessageDialog(null,"Numero do cupom fiscal: "+this.notaFiscal+"\n" +
+        /*/*JOptionPane.showMessageDialog(null,"Numero do cupom fiscal: "+this.notaFiscal+"\n" +
                 "Data da venda: " + D +"\n Atendente: "+this.funcionario.getNome()+"\n Cliente: "+this.cliente.getNome()
         + "   Fidelidade: "+this.getCliente().getNumeroCartaoFidelidade()+"\n==================================\n" +
                 "ITENS\n"+itens.get().getProduto().getDescricaoReduzida());*/
 
-        System.out.println("Resumo da Compra \n==================================\nNúmero do cupom fiscal: "+this.notaFiscal+"\n" +
-                "Data da venda: " + D +"\nAtendente: "+this.funcionario.getNome()+"\nCliente: "+this.cliente.getNome()
-        + "   Fidelidade: "+this.getCliente().getNumeroCartaoFidelidade()+"\n==================================\n" +
-                "ITENS");
+        System.out.println("\nResumo da Compra\n" +
+                "\n=========================================\n" +
+                "Número do cupom fiscal: "+this.notaFiscal+"\n" +
+                "Data da venda: " + D +
+                "\nAtendente: "+this.funcionario.getNome() +
+                "\nCliente: "+this.cliente.getNome() +
+                "   Fidelidade: "+this.getCliente().getNumeroCartaoFidelidade() +
+                "\n=========================================\n" +
+                "\nITENS");
 
         // For que percorre o Array de itens e traz as informações dos atributos Produto e DescricaoReduzida
+            System.out.println("\n------------------------------------------\n");
         for (int i = 0; i < itens.size(); i++){
             System.out.println("Item: "+itens.get(i).getProduto().getDescricaoReduzida());
 
@@ -126,12 +132,10 @@ public class Venda {
             System.out.println("Quantidade: "+itens.get(i).getQtd());
             System.out.println("Valor Unitário: "+itens.get(i).getProduto().getPrecoVenda());
             System.out.println("SubTotal: "+itens.get(i).getSubTotal());
-            System.out.println("----------------------------------");
+            System.out.println("\n------------------------------------------\n");
         }
 
-        System.out.println("==================================");
-        System.out.println("Total: "+this.TotalVenda());
-
+        System.out.println("=========================================");
+        System.out.println("\nTotal: "+this.TotalVenda());
     }
-
 }

@@ -9,7 +9,7 @@ public class App
     public static void main( String[] args )
     {
         System.out.println("=========================");
-        System.out.println( "     Pedro Pedreiro" );
+        System.out.println( "     Pedro Pedreiro     ");
         System.out.println("Materiais para Construção");
         System.out.println("=========================");
 
@@ -32,7 +32,7 @@ public class App
         lstFornecedorCimento.add(fornecedorCasadoCimento);
         lstFornecedorCimento.add(fornecedorCimen);
 
-        Produto produtoCimento = new Produto("Cimento 50Kg", "Saco de Cimento 25KG", "Saco de Cimento 25KG para uma massa mais forte","Taca massa no muro", 25, 41,100,lstFornecedorCimento);
+        Produto produtoCimento = new Produto("Cimento 50Kg", "Saco de Cimento 50KG", "Saco de Cimento 50KG para uma massa mais forte","Taca massa no muro", 25, 41,100,lstFornecedorCimento);
 
         //Produto tijolo
         Fornecedor fornecedorTijolar = new Fornecedor("Tijolar", "505.422.676-15");
@@ -42,7 +42,7 @@ public class App
         lstFornecedorTijolo.add(fornecedorTijolar);
         lstFornecedorTijolo.add(fornecedorParede);
 
-        Produto produtoTijolo = new Produto("Tijolo", "Tijolo de barro", "Tijolo fabricado com o mais puro barro do corrego triste","Tijolinho", 2.10, 3,5000,lstFornecedorTijolo);
+        Produto produtoTijolo = new Produto("Tijolo", "Tijolo de barro", "Tijolo fabricado com o mais puro barro do córrego triste","Tijolinho", 2.10, 3,5000,lstFornecedorTijolo);
 
 
         //itens da venda
@@ -58,8 +58,5 @@ public class App
         Venda venda = new Venda("555777",dataVenda,cliente,150,funcionario,itens);
 
         venda.imprimirResumo();
-
-
-
     }
 }
