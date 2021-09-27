@@ -11,8 +11,9 @@ public class Cliente extends Pessoa{
         super(pNome, pDocumento);
     };
 
-    public Cliente(String pNome, String pTelefone, String pDocumento, Date pDataNascimento, Endereco pEndereco){
+    public Cliente(String pNome, String pTelefone, String pDocumento, Date pDataNascimento, Endereco pEndereco, String pnumeroCartaoFidelidade){
         super(pNome, pTelefone, pDocumento, pDataNascimento, pEndereco);
+        this.numeroCartaoFidelidade = pnumeroCartaoFidelidade;
     };
 
     // ========== Get e Set

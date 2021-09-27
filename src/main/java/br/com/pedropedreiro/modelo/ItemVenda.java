@@ -6,6 +6,11 @@ public class ItemVenda {
     private double qtd;
     private double subTotal;
 
+    public ItemVenda(Produto produto, double qtd) {
+        this.produto = produto;
+        this.qtd = qtd;
+    }
+
     // ========== Gets e Sets
     // ===== Produto
     public Produto getProduto() {
@@ -25,9 +30,13 @@ public class ItemVenda {
 
     // ===== SubTotal
     public double getSubTotal() {
-        return subTotal;
+        double subTotal = this.produto.getPrecoVenda()*qtd;
+        this.subTotal = subTotal;
+        return this.subTotal;
     }
     public void setSubTotal(double subTotal) {
         this.subTotal = subTotal;
     }
+
+
 }

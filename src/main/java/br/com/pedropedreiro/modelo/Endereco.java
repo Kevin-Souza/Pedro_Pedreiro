@@ -11,6 +11,16 @@ public class Endereco {
     private String numero;
     private String uf;
 
+    public Endereco(String logradouro, String bairro, String cep, String cidade, String complemento, String numero, String uf) {
+        this.logradouro = logradouro;
+        this.bairro = bairro;
+        this.cep = cep;
+        this.cidade = cidade;
+        this.complemento = complemento;
+        this.numero = numero;
+        this.uf = uf;
+    }
+
     // ========== Gets e Sets
     // ===== ID
     public int getId() {

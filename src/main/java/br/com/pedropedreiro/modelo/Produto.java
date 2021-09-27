@@ -14,6 +14,17 @@ public class Produto {
     private double qtd;
     private ArrayList<Fornecedor> fornecedores;
 
+    public Produto(String nomeProduto, String descricaoReduzida, String descricaoCompleta, String marca, double precoCusto, double precoVenda, double qtd, ArrayList<Fornecedor> fornecedores) {
+        this.nomeProduto = nomeProduto;
+        this.descricaoReduzida = descricaoReduzida;
+        this.descricaoCompleta = descricaoCompleta;
+        this.marca = marca;
+        this.precoCusto = precoCusto;
+        this.precoVenda = precoVenda;
+        this.qtd = qtd;
+        this.fornecedores = fornecedores;
+    }
+
     // ========== Gets e Sets
     // ===== ID
     public int getId() {
