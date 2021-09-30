@@ -37,6 +37,4 @@ public class ItemVenda {
     public void setSubTotal(double subTotal) {
         this.subTotal = subTotal;
     }
-
-
 }

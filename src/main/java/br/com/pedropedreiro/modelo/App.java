@@ -1,6 +1,7 @@
 package br.com.pedropedreiro.modelo;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 public class App
@@ -53,7 +54,7 @@ public class App
         itens.add(iCimento);
         itens.add(iTijolo);
 
-        Date dataVenda = new Date(2021,9,26);
+        Date dataVenda = new Date(121, Calendar.SEPTEMBER,30);
         Venda venda = new Venda("555777",dataVenda,cliente,150,funcionario,itens);
 
         venda.imprimirResumo();

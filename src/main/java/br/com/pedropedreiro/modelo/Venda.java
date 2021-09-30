@@ -1,7 +1,6 @@
 package br.com.pedropedreiro.modelo;
 
 import javax.swing.*;
-import java.sql.SQLOutput;
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
