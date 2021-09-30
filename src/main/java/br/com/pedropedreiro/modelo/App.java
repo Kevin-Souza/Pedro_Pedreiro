@@ -1,6 +1,5 @@
 package br.com.pedropedreiro.modelo;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -25,8 +24,8 @@ public class App
         Funcionario funcionario = new Funcionario("Denys","333.444.222-55");
 
         //Produto cimento
-        Fornecedor fornecedorCasadoCimento = new Fornecedor("CasadoCimento ", "111.345.743-22");
-        Fornecedor fornecedorCimen = new Fornecedor("Cimen ", "443.111.623-77");
+        Fornecedor fornecedorCasadoCimento = new Fornecedor("CasadoCimento", "111.345.743-22");
+        Fornecedor fornecedorCimen = new Fornecedor("Cimen", "443.111.623-77");
 
         ArrayList<Fornecedor> lstFornecedorCimento = new ArrayList<Fornecedor>();
         lstFornecedorCimento.add(fornecedorCasadoCimento);

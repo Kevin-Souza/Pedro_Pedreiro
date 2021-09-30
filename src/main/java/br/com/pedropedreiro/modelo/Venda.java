@@ -126,7 +126,7 @@ public class Venda {
             // For que percorre o Array de itens e traz as informações dos atributos nome e Documento do fornecedor
             for(int g = 0; g < itens.get(i).getProduto().getFornecedores().size(); g++){
                 Fornecedor f = itens.get(i).getProduto().getFornecedores().get(g);
-                System.out.println("Fornecedor: "+f.getNome()+""+f.getDocumento());
+                System.out.println("Fornecedor: "+f.getNome()+" - "+f.getDocumento());
             }
 
             System.out.println("Quantidade: "+itens.get(i).getQtd());
