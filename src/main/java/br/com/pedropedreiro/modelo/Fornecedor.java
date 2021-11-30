@@ -1,6 +1,5 @@
 package br.com.pedropedreiro.modelo;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 public class Fornecedor extends Pessoa{
