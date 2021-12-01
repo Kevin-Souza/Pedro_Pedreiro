@@ -15,7 +15,7 @@ public class App
         System.out.println("=========================");
 
         //Cliente
-        Date dtNascimento = new Date();
+        Calendar dtNascimento = Calendar.getInstance();
 
         Endereco end = new Endereco("Rua Altair Passos Dias Aguiar","Jardim do taxista",
                 "55850-000","Lagoa Azul","Na rua onde encontraram a bota de Judas","333","AC");

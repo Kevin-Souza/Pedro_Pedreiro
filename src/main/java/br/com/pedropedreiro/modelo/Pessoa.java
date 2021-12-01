@@ -1,5 +1,6 @@
 package br.com.pedropedreiro.modelo;
 
+import java.util.Calendar;
 import java.util.Date;
 
 public abstract class Pessoa {
@@ -9,16 +10,18 @@ public abstract class Pessoa {
     private String telefone;
     private String email;
     private String documento;
-    private Date dataNascimento;
+    private Calendar dataNascimento;
     private Endereco endereco;
 
     // ========== Construtor
+    public Pessoa(){}
+
     public Pessoa(String pNome,  String pDocumento){
         this.nome = pNome;
         this.documento = pDocumento;
     };
 
-    public Pessoa(String pNome, String pTelefone, String pDocumento, Date pDataNascimento, Endereco pEndereco){
+    public Pessoa(String pNome, String pTelefone, String pDocumento, Calendar pDataNascimento, Endereco pEndereco){
         this.nome = pNome;
         this.telefone = pTelefone;
         this.documento = pDocumento;
@@ -68,10 +71,10 @@ public abstract class Pessoa {
     }
 
     // ===== Data Nascimento
-    public Date getDataNascimento() {
+    public Calendar getDataNascimento() {
         return dataNascimento;
     }
-    public void setDataNascimento(Date dataNascimento) {
+    public void setDataNascimento(Calendar dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 
