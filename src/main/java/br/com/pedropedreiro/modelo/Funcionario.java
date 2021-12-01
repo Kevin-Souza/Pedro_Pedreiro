@@ -1,27 +1,29 @@
 package br.com.pedropedreiro.modelo;
 
-import java.util.Date;
+import java.util.Calendar;
 
 public class Funcionario extends Pessoa{
     // ========== Atributos
-    private String salario;
+    private Double salario;
     private String pis;
 
     // ========== Construtor
+    public Funcionario(){}
+
     public Funcionario(String pNome,  String pDocumento){
         super(pNome, pDocumento);
     };
 
-    public Funcionario(String pNome, String pTelefone, String pDocumento, Date pDataNascimento, Endereco pEndereco){
+    public Funcionario(String pNome, String pTelefone, String pDocumento, Calendar pDataNascimento, Endereco pEndereco){
         super(pNome, pTelefone, pDocumento, pDataNascimento, pEndereco);
     };
 
     // ========== Gets e Sets
     // ===== Salário
-    public String getSalario() {
+    public double getSalario() {
         return salario;
     }
-    public void setSalario(String salario) {
+    public void setSalario(Double salario) {
         this.salario = salario;
     }
 

@@ -17,6 +17,7 @@ public class ClienteRdn {
         sql.append("            ,telefone                             ");
         sql.append("            ,data_nascimento                      ");
         sql.append("            ,email                                ");
+        sql.append("            ,documento                            ");
         sql.append("            ,numero_cartao_fidelidade             ");
         sql.append("            ,logradouro                           ");
         sql.append("            ,bairro                               ");
@@ -37,6 +38,7 @@ public class ClienteRdn {
         sql.append("              ,?                                  ");
         sql.append("              ,?                                  ");
         sql.append("              ,?                                  ");
+        sql.append("              ,?                                  ");
         sql.append("              ,?)                                 ");
 
         Connection conn = new ConnectionFactory().getConnection();
@@ -47,15 +49,16 @@ public class ClienteRdn {
 
         stmt.setDate(3, new Date(cliente.getDataNascimento().getTimeInMillis()));
         stmt.setString(4, cliente.getEmail());
-        stmt.setString(5, cliente.getNumeroCartaoFidelidade());
+        stmt.setString(5, cliente.getDocumento());
+        stmt.setString(6, cliente.getNumeroCartaoFidelidade());
 
-        stmt.setString(6, cliente.getEndereco().getLogradouro());
-        stmt.setString(7, cliente.getEndereco().getBairro());
-        stmt.setString(8, cliente.getEndereco().getCep());
-        stmt.setString(9, cliente.getEndereco().getCidade());
-        stmt.setString(10, cliente.getEndereco().getComplemento());
-        stmt.setString(11, cliente.getEndereco().getNumero());
-        stmt.setString(12, cliente.getEndereco().getUf());
+        stmt.setString(7, cliente.getEndereco().getLogradouro());
+        stmt.setString(8, cliente.getEndereco().getBairro());
+        stmt.setString(9, cliente.getEndereco().getCep());
+        stmt.setString(10, cliente.getEndereco().getCidade());
+        stmt.setString(11, cliente.getEndereco().getComplemento());
+        stmt.setString(12, cliente.getEndereco().getNumero());
+        stmt.setString(13, cliente.getEndereco().getUf());
 
         linhasAfetadas = stmt.executeUpdate();
 
@@ -80,6 +83,7 @@ public class ClienteRdn {
             str.append("        ,a.telefone                    ");
             str.append("        ,a.data_nascimento             ");
             str.append("        ,a.email                       ");
+            str.append("        ,documento                     ");
             str.append("        ,a.numero_cartao_fidelidade    ");
             str.append("        ,a.logradouro                  ");
             str.append("        ,a.bairro                      ");
@@ -113,6 +117,7 @@ public class ClienteRdn {
 
                 cliente.setDataNascimento(calendar);
                 cliente.setEmail(rs.getString("email"));
+                cliente.setDocumento(rs.getString("documento"));
                 cliente.setNumeroCartaoFidelidade(rs.getString("numero_cartao_fidelidade"));
 
                 //POPULAR/CARREGAR OS ATRIBUTOS DO ENDEREÇO
@@ -183,6 +188,7 @@ public class ClienteRdn {
             str.append("                    ,telefone = ?                  ");
             str.append("                    ,data_nascimento = ?           ");
             str.append("                    ,email = ?                     ");
+            str.append("                    ,documento = ?                 ");
             str.append("                    ,numero_cartao_fidelidade = ?  ");
             str.append("                    ,logradouro = ?                ");
             str.append("                     ,bairro = ?                   ");
@@ -205,15 +211,16 @@ public class ClienteRdn {
             stmt.setDate(3, new java.sql.Date(cliente.getDataNascimento().getTimeInMillis()));
 
             stmt.setString(4, cliente.getEmail());
-            stmt.setString(5, cliente.getNumeroCartaoFidelidade());
-            stmt.setString(6, cliente.getEndereco().getLogradouro());
-            stmt.setString(7, cliente.getEndereco().getBairro());
-            stmt.setString(8, cliente.getEndereco().getCep());
-            stmt.setString(9, cliente.getEndereco().getCidade());
-            stmt.setString(10, cliente.getEndereco().getComplemento());
-            stmt.setString(11, cliente.getEndereco().getNumero());
-            stmt.setString(12, cliente.getEndereco().getUf());
-            stmt.setInt(13, cliente.getId());
+            stmt.setString(5, cliente.getDocumento());
+            stmt.setString(6, cliente.getNumeroCartaoFidelidade());
+            stmt.setString(7, cliente.getEndereco().getLogradouro());
+            stmt.setString(8, cliente.getEndereco().getBairro());
+            stmt.setString(9, cliente.getEndereco().getCep());
+            stmt.setString(10, cliente.getEndereco().getCidade());
+            stmt.setString(11, cliente.getEndereco().getComplemento());
+            stmt.setString(12, cliente.getEndereco().getNumero());
+            stmt.setString(13, cliente.getEndereco().getUf());
+            stmt.setInt(14, cliente.getId());
 
             //EXECUTAR O COMANDO
             //numeroLinhasAfetadas = stmt.executeUpdate(str.toString());
@@ -245,6 +252,7 @@ public class ClienteRdn {
             str.append("        ,a.telefone                    ");
             str.append("        ,a.data_nascimento             ");
             str.append("        ,a.email                       ");
+            str.append("        ,a.documento                   ");
             str.append("        ,a.numero_cartao_fidelidade    ");
             str.append("        ,a.logradouro                  ");
             str.append("        ,a.bairro                      ");
@@ -282,6 +290,7 @@ public class ClienteRdn {
 
                 cliente.setDataNascimento(calendar);
                 cliente.setEmail(rs.getString("email"));
+                cliente.setDocumento(rs.getString("documento"));
                 cliente.setNumeroCartaoFidelidade(rs.getString("numero_cartao_fidelidade"));
 
                 //POPULAR/CARREGAR OS ATRIBUTOS DO ENDEREÇO

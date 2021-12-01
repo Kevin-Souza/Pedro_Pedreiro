@@ -1,5 +1,6 @@
 package br.com.pedropedreiro.modelo;
 
+import java.util.Calendar;
 import java.util.Date;
 
 public class Fornecedor extends Pessoa{
@@ -10,11 +11,13 @@ public class Fornecedor extends Pessoa{
     private String tipoProduto;
 
     // ========== Construtor
+    public Fornecedor(){}
+    
     public Fornecedor(String pNome,  String pDocumento){
         super(pNome, pDocumento);
     };
 
-    public Fornecedor(String pNome, String pTelefone, String pDocumento, Date pDataNascimento, Endereco pEndereco){
+    public Fornecedor(String pNome, String pTelefone, String pDocumento, Calendar pDataNascimento, Endereco pEndereco){
         super(pNome, pTelefone, pDocumento, pDataNascimento, pEndereco);
     };
 
