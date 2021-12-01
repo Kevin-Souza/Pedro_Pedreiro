@@ -8,7 +8,8 @@ public class App
 {
     public static void main( String[] args )
     {
-        System.out.println("=========================");
+        // Trabalho Primeiro Semestre
+        /*/*System.out.println("=========================");
         System.out.println( "     Pedro Pedreiro     ");
         System.out.println("Materiais para Construção");
         System.out.println("=========================");
@@ -57,6 +58,8 @@ public class App
         Date dataVenda = new Date(121, Calendar.SEPTEMBER,30);
         Venda venda = new Venda("555777",dataVenda,cliente,150,funcionario,itens);
 
-        venda.imprimirResumo();
+        venda.imprimirResumo();/**/
+
+        
     }
 }
