@@ -122,15 +122,18 @@ public class FornecedorRdn {
                 fornecedor.setId(rs.getInt("id_fornecedor"));
                 fornecedor.setNome(rs.getString("nome"));
                 fornecedor.setTelefone(rs.getString("telefone"));
+                fornecedor.setEmail(rs.getString("email"));
+                fornecedor.setDocumento(rs.getString("documento"));
 
                 // Converter SQL Date to Calendar
                 Calendar calendar = Calendar.getInstance();
                 calendar.setTime(rs.getDate("data_nascimento"));
                 fornecedor.setDataNascimento(calendar);
 
-                fornecedor.setEmail(rs.getString("email"));
-                //fornecedor.setSalario(rs.getString("salario"));
-                //fornecedor.setPis(rs.getString("pis"));
+                fornecedor.setRazaoSocial(rs.getString("razao_social"));
+                fornecedor.setInscricaoEstadual(rs.getString("inscricao_estadual"));
+                fornecedor.setCategoria(rs.getString("categoria"));
+                fornecedor.setTipoProduto(rs.getString("tipo_produto"));
 
                 // Popular/Carregar os atributos do endereço
                 Endereco end = new Endereco();
@@ -191,12 +194,15 @@ public class FornecedorRdn {
         int numeroLinhasAfetadas = 0;
 
         try {
-            str.append(" update fornecedor set nome = ?     ");
+            str.append(" update fornecedor set nome = ?      ");
             str.append("          ,telefone = ?              ");
-            str.append("          ,data_nascimento = ?       ");
             str.append("          ,email = ?                 ");
-            str.append("          ,salario = ?               ");
-            str.append("          ,pis = ?                   ");
+            str.append("          ,documento = ?             ");
+            str.append("          ,data_nascimento = ?       ");
+            str.append("          ,razao_social = ?          ");
+            str.append("          ,inscricao_estadual = ?    ");
+            str.append("          ,categoria = ?             ");
+            str.append("          ,tipo_produto = ?          ");
             str.append("          ,logradouro = ?            ");
             str.append("          ,bairro = ?                ");
             str.append("          ,cep = ?                   ");
@@ -204,7 +210,7 @@ public class FornecedorRdn {
             str.append("          ,complemento = ?           ");
             str.append("          ,numero = ?                ");
             str.append("          ,uf = ?                    ");
-            str.append(" where id_fornecedor = ?            ");
+            str.append(" where id_fornecedor = ?             ");
 
             // Recuperar a Conexão
             Connection conn = new ConnectionFactory().getConnection();
@@ -213,6 +219,32 @@ public class FornecedorRdn {
             PreparedStatement stmt = conn.prepareStatement(str.toString());
 
             // Criação de Parametros
+            fornecedor.setId(rs.getInt("id_fornecedor"));
+            fornecedor.setNome(rs.getString("nome"));
+            fornecedor.setTelefone(rs.getString("telefone"));
+            fornecedor.setEmail(rs.getString("email"));
+            fornecedor.setDocumento(rs.getString("documento"));
+
+            // Converter SQL Date to Calendar
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(rs.getDate("data_nascimento"));
+            fornecedor.setDataNascimento(calendar);
+
+            fornecedor.setRazaoSocial(rs.getString("razao_social"));
+            fornecedor.setInscricaoEstadual(rs.getString("inscricao_estadual"));
+            fornecedor.setCategoria(rs.getString("categoria"));
+            fornecedor.setTipoProduto(rs.getString("tipo_produto"));
+
+            // Popular/Carregar os atributos do endereço
+            Endereco end = new Endereco();
+            end.setLogradouro(rs.getString("logradouro"));
+            end.setBairro(rs.getString("bairro"));
+            end.setCep(rs.getString("cep"));
+            end.setCidade(rs.getString("cidade"));
+            end.setComplemento(rs.getString("complemento"));
+            end.setNumero(rs.getString("numero"));
+            end.setUf(rs.getString("uf"));
+
             stmt.setString(1, fornecedor.getNome());
             stmt.setString(2, fornecedor.getTelefone());
 
@@ -321,5 +353,7 @@ public class FornecedorRdn {
     }
 
     private class ArrayList<T> {
+        public void add(T fornecedor) {
+        }
     }
 }

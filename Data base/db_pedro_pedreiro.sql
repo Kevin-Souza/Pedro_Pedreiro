@@ -55,7 +55,7 @@ CREATE TABLE funcionario (
   documento			 		varchar(15)  	NOT NULL,
   data_nascimento 			datetime  		NOT NULL,
   -- Classe Funcionario
-  salario 					varchar(22) 	NOT NULL,
+  salario 					double 	NOT NULL,
   pis 						varchar(45)		NOT NULL,  
   -- Classe Endereço
   logradouro 				varchar(100)   	NOT NULL,
