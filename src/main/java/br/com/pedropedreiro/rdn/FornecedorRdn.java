@@ -4,6 +4,7 @@ import br.com.pedropedreiro.modelo.Fornecedor;
 import br.com.pedropedreiro.modelo.Endereco;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class FornecedorRdn {
@@ -333,8 +334,4 @@ public class FornecedorRdn {
         return fornecedor;
     }
 
-    private class ArrayList<T> {
-        public void add(T fornecedor) {
-        }
-    }
 }

@@ -10,12 +10,12 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class Principal {
+public class PrincipalCliente {
     public static void main (String[] args) throws SQLException{
         //TESTAR CONEXÃO -- Deixar comentado
-            /*/*Connection conn = (Connection) new ConnectionFactory().getConnection();
-            System.out.println("Conexão aberta");
-            conn.close();*/
+//            Connection conn = (Connection) new ConnectionFactory().getConnection();
+//            System.out.println("Conexão aberta");
+//            conn.close();
 
         //INSTANCIAR A CLASSE DE REGRA DE NEGÓCIOS
         // ===== Inserir
