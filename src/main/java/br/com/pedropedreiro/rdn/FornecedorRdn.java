@@ -188,8 +188,7 @@ public class FornecedorRdn {
     }
 
     // Alterar
-    public int alterar(Fornecedor fornecedor)
-    {
+    public int alterar(Fornecedor fornecedor) {
         StringBuilder str = new StringBuilder();
         int numeroLinhasAfetadas = 0;
 
@@ -218,48 +217,25 @@ public class FornecedorRdn {
             // Instanciar o Comando
             PreparedStatement stmt = conn.prepareStatement(str.toString());
 
-            // Criação de Parametros
-            fornecedor.setId(rs.getInt("id_fornecedor"));
-            fornecedor.setNome(rs.getString("nome"));
-            fornecedor.setTelefone(rs.getString("telefone"));
-            fornecedor.setEmail(rs.getString("email"));
-            fornecedor.setDocumento(rs.getString("documento"));
-
-            // Converter SQL Date to Calendar
-            Calendar calendar = Calendar.getInstance();
-            calendar.setTime(rs.getDate("data_nascimento"));
-            fornecedor.setDataNascimento(calendar);
-
-            fornecedor.setRazaoSocial(rs.getString("razao_social"));
-            fornecedor.setInscricaoEstadual(rs.getString("inscricao_estadual"));
-            fornecedor.setCategoria(rs.getString("categoria"));
-            fornecedor.setTipoProduto(rs.getString("tipo_produto"));
-
-            // Popular/Carregar os atributos do endereço
-            Endereco end = new Endereco();
-            end.setLogradouro(rs.getString("logradouro"));
-            end.setBairro(rs.getString("bairro"));
-            end.setCep(rs.getString("cep"));
-            end.setCidade(rs.getString("cidade"));
-            end.setComplemento(rs.getString("complemento"));
-            end.setNumero(rs.getString("numero"));
-            end.setUf(rs.getString("uf"));
-
+            /// Fornecedor
             stmt.setString(1, fornecedor.getNome());
             stmt.setString(2, fornecedor.getTelefone());
+            stmt.setString(3, fornecedor.getEmail());
+            stmt.setString(4, fornecedor.getDocumento());
+            stmt.setDate(5, new java.sql.Date(fornecedor.getDataNascimento().getTimeInMillis()));
+            stmt.setString(6, fornecedor.getRazaoSocial());
+            stmt.setString(7, fornecedor.getInscricaoEstadual());
+            stmt.setString(8, fornecedor.getCategoria());
+            stmt.setString(9, fornecedor.getTipoProduto());
 
-            stmt.setDate(3, new java.sql.Date(fornecedor.getDataNascimento().getTimeInMillis()));
-            stmt.setString(4, fornecedor.getEmail());
-            //stmt.setString(5, fornecedor.getSalario());
-            //stmt.setString(6, fornecedor.getPis());
-
-            stmt.setString(7, fornecedor.getEndereco().getLogradouro());
-            stmt.setString(8, fornecedor.getEndereco().getBairro());
-            stmt.setString(9, fornecedor.getEndereco().getCep());
-            stmt.setString(10, fornecedor.getEndereco().getCidade());
-            stmt.setString(11, fornecedor.getEndereco().getComplemento());
-            stmt.setString(12, fornecedor.getEndereco().getNumero());
-            stmt.setString(13, fornecedor.getEndereco().getUf());
+            // Endereço
+            stmt.setString(10, fornecedor.getEndereco().getLogradouro());
+            stmt.setString(11, fornecedor.getEndereco().getBairro());
+            stmt.setString(12, fornecedor.getEndereco().getCep());
+            stmt.setString(13, fornecedor.getEndereco().getCidade());
+            stmt.setString(14, fornecedor.getEndereco().getComplemento());
+            stmt.setString(15, fornecedor.getEndereco().getNumero());
+            stmt.setString(16, fornecedor.getEndereco().getUf());
 
             // Executar o Comando
             numeroLinhasAfetadas = stmt.executeUpdate();
@@ -276,29 +252,31 @@ public class FornecedorRdn {
     }
 
     // Obter por ID
-    public Fornecedor obterPorId(int id)
-    {
+    public Fornecedor obterPorId(int id) {
         Fornecedor fornecedor = new Fornecedor();
 
         try {
             StringBuilder str = new StringBuilder();
 
-            str.append("select     f.id_fornecedor         ");
-            str.append("          ,f.nome                   ");
-            str.append("          ,f.telefone               ");
-            str.append("          ,f.data_nascimento        ");
-            str.append("          ,f.email                  ");
-            str.append("          ,f.salario                ");
-            str.append("          ,f.pis                    ");
-            str.append("          ,f.logradouro             ");
-            str.append("          ,f.bairro                 ");
-            str.append("          ,f.cep                    ");
-            str.append("          ,f.cidade                 ");
-            str.append("          ,f.complemento            ");
-            str.append("          ,f.numero                 ");
-            str.append("          ,f.uf                     ");
-            str.append(" from fornecedor f                 ");
-            str.append(" where f.id_fornecedor = ?         ");
+            str.append(" select  f.id_fornecedor        ");
+            str.append("        ,f.nome                 ");
+            str.append("        ,f.telefone             ");
+            str.append("        ,f.email                ");
+            str.append("        ,f.documento            ");
+            str.append("        ,f.data_nascimento      ");
+            str.append("        ,f.razao_social         ");
+            str.append("        ,f.inscricao_estadual   ");
+            str.append("        ,f.categoria            ");
+            str.append("        ,f.tipo_produto         ");
+            str.append("        ,f.logradouro           ");
+            str.append("        ,f.bairro               ");
+            str.append("        ,f.cep                  ");
+            str.append("        ,f.cidade               ");
+            str.append("        ,f.complemento          ");
+            str.append("        ,f.numero               ");
+            str.append("        ,f.uf                   ");
+            str.append("from fornecedor f               ");
+            str.append("where f.id_fornecedor = ?       ");
 
             // Abre a conexão
             Connection conn = new ConnectionFactory().getConnection();
@@ -320,15 +298,18 @@ public class FornecedorRdn {
                 fornecedor.setId(rs.getInt("id_fornecedor"));
                 fornecedor.setNome(rs.getString("nome"));
                 fornecedor.setTelefone(rs.getString("telefone"));
+                fornecedor.setEmail(rs.getString("email"));
+                fornecedor.setDocumento(rs.getString("documento"));
 
                 // Converter SQL Date to Calendar
                 Calendar calendar = Calendar.getInstance();
                 calendar.setTime(rs.getDate("data_nascimento"));
                 fornecedor.setDataNascimento(calendar);
 
-                fornecedor.setEmail(rs.getString("email"));
-                //fornecedor.setSalario(rs.getString("salario"));
-                //fornecedor.setPis(rs.getString("pis"));
+                fornecedor.setRazaoSocial(rs.getString("razao_social"));
+                fornecedor.setInscricaoEstadual(rs.getString("inscricao_estadual"));
+                fornecedor.setCategoria(rs.getString("categoria"));
+                fornecedor.setTipoProduto(rs.getString("tipo_produto"));
 
                 // Popular/Carregar os atributos do endereço
                 Endereco end = new Endereco();
