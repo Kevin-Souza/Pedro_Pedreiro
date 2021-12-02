@@ -16,9 +16,9 @@ public class FuncionarioRdn {
         sql.append("INSERT INTO funcionario                           ");
         sql.append("            (nome                                 ");
         sql.append("            ,telefone                             ");
-        sql.append("            ,data_nascimento                      ");
         sql.append("            ,email                                ");
         sql.append("            ,documento                            ");
+        sql.append("            ,data_nascimento                      ");
         sql.append("            ,salario                              ");
         sql.append("            ,pis                                  ");
         sql.append("            ,logradouro                           ");
@@ -49,12 +49,13 @@ public class FuncionarioRdn {
 
         stmt.setString(1, funcionario.getNome());
         stmt.setString(2, funcionario.getTelefone());
+        stmt.setString(3, funcionario.getEmail());
+        stmt.setString(4, funcionario.getDocumento());
 
-        stmt.setDate(3, new java.sql.Date(funcionario.getDataNascimento().getTimeInMillis()));
-        stmt.setString(4, funcionario.getEmail());
-        stmt.setString(5,funcionario.getDocumento());
+        stmt.setDate(5, new java.sql.Date(funcionario.getDataNascimento().getTimeInMillis()));
+
         stmt.setDouble(6, funcionario.getSalario());
-        stmt.setString(7,funcionario.getPis());
+        stmt.setString(7, funcionario.getPis());
 
         stmt.setString(8, funcionario.getEndereco().getLogradouro());
         stmt.setString(9, funcionario.getEndereco().getBairro());
@@ -74,7 +75,7 @@ public class FuncionarioRdn {
         return linhasAfetadas;
     }
 
-    public ArrayList<Funcionario> obterTodosFunc() {
+    public ArrayList<Funcionario> obterTodos() {
 
         ArrayList<Funcionario> retorno = new ArrayList<Funcionario>();
 
@@ -85,9 +86,9 @@ public class FuncionarioRdn {
             str.append("select  a.id_funcionario               ");
             str.append("        ,a.nome                        ");
             str.append("        ,a.telefone                    ");
-            str.append("        ,a.data_nascimento             ");
             str.append("        ,a.email                       ");
             str.append("        ,a.documento                   ");
+            str.append("        ,a.data_nascimento             ");
             str.append("        ,a.salario                     ");
             str.append("        ,a.pis                         ");
             str.append("        ,a.logradouro                  ");
@@ -328,6 +329,4 @@ public class FuncionarioRdn {
         }
         return numeroLinhasAfetadas;
     }
-
-
 }

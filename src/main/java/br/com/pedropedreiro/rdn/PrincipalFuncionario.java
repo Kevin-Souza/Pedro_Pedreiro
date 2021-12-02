@@ -1,7 +1,7 @@
 package br.com.pedropedreiro.rdn;
 
 import br.com.pedropedreiro.modelo.Endereco;
-import br.com.pedropedreiro.modelo.Fornecedor;
+import br.com.pedropedreiro.modelo.Funcionario;
 
 import java.sql.SQLException;
 import java.text.DateFormat;
@@ -9,48 +9,47 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class PrincipalFornecedor {
+public class PrincipalFuncionario {
     public static void main(String[] args) throws SQLException {
         //INSTANCIAR A CLASSE DE REGRA DE NEGÓCIOS
         // ===== Inserir
-        FornecedorRdn forRdn = new FornecedorRdn();
+        FuncionarioRdn funRdn = new FuncionarioRdn();
 
-        Calendar dtNascimento2 = Calendar.getInstance();
-        dtNascimento2.set(Calendar.YEAR, 1999);
-        dtNascimento2.set(Calendar.MONTH, Calendar.FEBRUARY);
-        dtNascimento2.set(Calendar.DATE, 15);
+        Calendar dtNascimento3 = Calendar.getInstance();
+        dtNascimento3.set(Calendar.YEAR, 2000);
+        dtNascimento3.set(Calendar.MONTH, Calendar.MARCH);
+        dtNascimento3.set(Calendar.DATE, 10);
 
-        Fornecedor fornecedor = new Fornecedor();
-        fornecedor.setNome("Cleitinho Alexandre");
-        fornecedor.setTelefone("11 97598-9126");
-        fornecedor.setDataNascimento(dtNascimento2);
-        fornecedor.setEmail("cleitinho@hotmail.com");
-        fornecedor.setDocumento("69128959733");
-        fornecedor.setRazaoSocial("972103");
-        fornecedor.setInscricaoEstadual("61.41.2021");
-        fornecedor.setCategoria("Tecnologia");
-        fornecedor.setTipoProduto("Eletroeletrônico");
-        fornecedor.setId(1);
+        Funcionario funcionario = new Funcionario();
+
+        funcionario.setNome("Amilton Queiroz");
+        funcionario.setTelefone("11 979126");
+        funcionario.setEmail("amilton@hotmail.com");
+        funcionario.setDocumento("69128959733");
+        funcionario.setDataNascimento(dtNascimento3);
+        funcionario.setSalario(4.000);
+        funcionario.setPis("456412");
+        funcionario.setId(1);
 
         Endereco endereco = new Endereco();
-        endereco.setBairro("Jardim Ipiranga");
+        endereco.setBairro("Jardim Oliveira");
         endereco.setCep("1450032");
         endereco.setCidade("Ribeirão Preto");
         endereco.setComplemento("Casa");
-        endereco.setNumero("302");
-        endereco.setLogradouro("Rua Teodoro Sampaio");
+        endereco.setNumero("362");
+        endereco.setLogradouro("Rua da Consolação");
         endereco.setUf("SP");
 
-        fornecedor.setEndereco(endereco);
+        funcionario.setEndereco(endereco);
 
         System.out.println("-----------------------");
-        System.out.println("Testando inserir fornecedor");
+        System.out.println("Testando inserir funcionário");
 
-        forRdn.inserir(fornecedor);
+        funRdn.inserir(funcionario);
         System.out.println("-----------------------");
 
         //IMPRIMIR CLIENTE
-        imprimirFornecedor();
+        imprimirFuncionario();
 
         System.out.println("-----------------------");
 
@@ -58,54 +57,49 @@ public class PrincipalFornecedor {
         System.out.println("Testando alterar");
 
         //OBJETO CLIENTE
-        Fornecedor forAlterar = forRdn.obterPorId(1);
+        Funcionario forAlterar = funRdn.obterPorId(1);
 
-        forAlterar.setNome("Alfredinho");
+        forAlterar.setNome("Almilto Queiroz");
         forAlterar.getEndereco().setLogradouro("Rua Logo Ali");
 
         //preencher com todos os atributos
-        int retAlterar = forRdn.alterar(forAlterar);
+        int retAlterar = funRdn.alterar(forAlterar);
 
         System.out.println("Número de linhas afetadas: " + retAlterar);
         System.out.println("-----------------------");
 
         //IMPRIMIR CLIENTE
-        imprimirFornecedor();
+        imprimirFuncionario();
 
         // ===== Deletar
         System.out.println("TESTANDO DELETAR");
 
         System.out.println("-----------------------");
-        int retorno = forRdn.excluir(2);
+        int retorno = funRdn.excluir(2);
         System.out.println("Número de linhas pelo delete: " + retorno);
         System.out.println("-----------------------");
 
         //IMPRIMIR CLIENTE
-        imprimirFornecedor();
-        }
+        imprimirFuncionario();
+    }
     // ===== Imprimir
-    public static void imprimirFornecedor() {
-        ArrayList<Fornecedor> lstFornecedor = new ArrayList<Fornecedor>();
+    public static void imprimirFuncionario() {
+        ArrayList<Funcionario> lstFuncionario = new ArrayList<Funcionario>();
 
-        // ArrayList<Fornecedor> lstFornecedor = new ArrayList<Fornecedor>();
-
-        lstFornecedor = new FornecedorRdn().obterTodos();
+        lstFuncionario = new FuncionarioRdn().obterTodos();
 
         //PARA CADA CLIENTE DA LISTA DE CLIENTES
-        for (Fornecedor forn : lstFornecedor) {
-            System.out.println("Fornecedor:" + forn.getId());
+        for (Funcionario forn : lstFuncionario) {
+            System.out.println("Funcionario:" + forn.getId());
             System.out.println("Nome: " + forn.getNome());
             System.out.println("Telefone:" + forn.getTelefone());
             System.out.println("Email:" + forn.getEmail());
             System.out.println("Documento: " + forn.getDocumento());
-            System.out.println("Razão Social: " + forn.getRazaoSocial());
-            System.out.println("Inscrição Estadual: " + forn.getInscricaoEstadual());
-            System.out.println("Categoria: " + forn.getCategoria());
-            System.out.println("Tipo do Produto: " + forn.getTipoProduto());
+            System.out.println("Salário: " + forn.getSalario());
+            System.out.println("PIS: " + forn.getPis());
 
             DateFormat formataData = new SimpleDateFormat("dd/MM/yyyy");
             System.out.println("Data de nascimento: " + formataData.format(forn.getDataNascimento().getTime()));
-
 
             //ACESSAR OS ATRIBUTOS DO ENDEREÇO
             System.out.println("Logradouro: " + forn.getEndereco().getLogradouro());
