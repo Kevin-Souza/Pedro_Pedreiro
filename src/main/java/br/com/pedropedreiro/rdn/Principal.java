@@ -1,5 +1,7 @@
 package br.com.pedropedreiro.rdn;
 
+
+import java.sql.Connection;
 import java.sql.SQLException;
 
 public class Principal {
@@ -9,10 +11,5 @@ public class Principal {
             Connection conn = (Connection) new ConnectionFactory().getConnection();
             System.out.println("Conexão aberta");
             conn.close();
-    }
-
-    private static class Connection {
-        public void close() {
-        }
     }
 }

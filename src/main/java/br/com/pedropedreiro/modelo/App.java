@@ -59,7 +59,5 @@ public class App
         Venda venda = new Venda("555777",dataVenda,cliente,150,funcionario,itens);
 
         venda.imprimirResumo();/**/
-
-        
     }
 }
