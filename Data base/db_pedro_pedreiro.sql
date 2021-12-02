@@ -107,3 +107,11 @@ CREATE TABLE item_venda (
   CONSTRAINT fk_produto_venda FOREIGN KEY (id_produto) REFERENCES produto (id_produto),
   CONSTRAINT fk_venda_item FOREIGN KEY (id_venda) REFERENCES venda (id_venda)
 );
+
+-- Selects
+SELECT * FROM db_pedro_pedreiro.cliente;
+SELECT * FROM db_pedro_pedreiro.fornecedor;
+SELECT * FROM db_pedro_pedreiro.funcionario;
+SELECT * FROM db_pedro_pedreiro.item_venda;
+SELECT * FROM db_pedro_pedreiro.produto;
+SELECT * FROM db_pedro_pedreiro.venda;
